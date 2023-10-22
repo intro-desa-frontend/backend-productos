@@ -3,10 +3,7 @@ const productosRouter = require("./routes/productos");
 const errorHandler = require("./middlewares/errorHandler");
 import serverless from "serverless-http";
 
-const { auth } = require("express-oauth2-jwt-bearer");
-
 require("dotenv").config();
-
 
 const app = express();
 app.use(express.json())
