@@ -39,11 +39,10 @@ exports.updateProductoById = async (req, res) => {
   try {
     const updatedProducto = await Producto.findByIdAndUpdate(
       req.params.id,
-      req.body,
-      { new: true }
+      req.body
     );
     if (!updatedProducto) {
-      return res.status(404).json({ error: 'Productoo no encontrado' });
+      return res.status(404).json({ error: 'Producto no encontrado' });
     }
     res.status(200).json(updatedProducto);
   } catch (error) {
