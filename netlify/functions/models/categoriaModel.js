@@ -6,7 +6,7 @@ let categorias = [
 
 class CategoriaModel {
     // Obtener todas las categorías
-    static findAll() {
+    static find() {
         return categorias;
     }
 
