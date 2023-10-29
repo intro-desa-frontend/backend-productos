@@ -26,6 +26,7 @@ app.get("/health", (req, res) => {
 
 // Rutas de productos
 app.use("/api/productos", productosRouter);
+app.use('/api/categories', categoryRoutes);
 
 app.use(errorHandler);
 
