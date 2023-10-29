@@ -37,7 +37,7 @@ exports.getProductoById = async (req, res) => {
 // Actualizar un producto por su ID
 exports.updateProductoById = async (req, res) => {
   try {
-    const updatedProducto = await Producto.findByIdAndUpdate(
+    const updatedProducto = await Producto.update(
       req.params.id,
       req.body
     );

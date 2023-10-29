@@ -4,43 +4,42 @@ let categorias = [
     { id: 3, nombre: 'Accesorios' },
 ];
 
-class CategoriaModel {
-    // Obtener todas las categorías
-    static find() {
-        return categorias;
-    }
+const find = () => {
+    return categorias;
+};
 
-    // Encontrar una categoría por ID
-    static findById(id) {
-        return categorias.find(Categoria => Categoria.id === id);
-    }
+const findById = (id) => {
+    return categorias.find(categoria => categoria.id === id);
+};
 
-    // Crear una nueva categoría
-    static create(name) {
-        const newCategoria = { id: categorias.length + 1, name };
-        categorias.push(newCategoria);
-        return newCategoria;
-    }
+const create = (name) => {
+    const newCategoria = { id: categorias.length + 1, nombre: name };
+    categorias.push(newCategoria);
+    return newCategoria;
+};
 
-    // Actualizar una categoría existente
-    static update(id, name) {
-        const CategoriaIndex = categorias.findIndex(Categoria => Categoria.id === id);
-        if (CategoriaIndex !== -1) {
-            categorias[CategoriaIndex].name = name;
-            return categorias[CategoriaIndex];
-        }
-        return null;
+const update = (id, name) => {
+    const categoriaIndex = categorias.findIndex(categoria => categoria.id === id);
+    if (categoriaIndex !== -1) {
+        categorias[categoriaIndex].nombre = name;
+        return categorias[categoriaIndex];
     }
+    return null;
+};
 
-    // Eliminar una categoría existente
-    static delete(id) {
-        const CategoriaIndex = categorias.findIndex(Categoria => Categoria.id === id);
-        if (CategoriaIndex !== -1) {
-            categorias.splice(CategoriaIndex, 1);
-            return true;
-        }
-        return false;
+const deleteCategoria = (id) => {
+    const categoriaIndex = categorias.findIndex(categoria => categoria.id === id);
+    if (categoriaIndex !== -1) {
+        categorias.splice(categoriaIndex, 1);
+        return true;
     }
-}
+    return false;
+};
 
-module.exports = CategoriaModel;
+module.exports = {
+    find,
+    findById,
+    create,
+    update,
+    delete: deleteCategoria
+};

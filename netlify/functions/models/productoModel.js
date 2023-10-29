@@ -44,28 +44,38 @@ const producto = (() => {
     return null;
   };
 
-  const findByIdAndUpdate = (id, update) => {
-    const producto = productos.find((producto) => producto.id === id);
-    if (producto) {
-      Object.assign(producto, update);
-      return producto;
+  const create = (newProducto) => {
+    newProducto.id = productos.length + 1;
+    productos.push(newProducto);
+    return newProducto;
+  };
+
+  const update = (id, updatedProducto) => {
+    const productoIndex = productos.findIndex((producto) => producto.id === id);
+    if (productoIndex !== -1) {
+      productos[productoIndex] = {
+        ...productos[productoIndex],
+        ...updatedProducto,
+      };
+      return productos[productoIndex];
     }
     return null;
   };
 
-  const findByIdAndDelete = (id) => {
-    const index = productos.findIndex((producto) => producto.id === id);
-    if (index !== -1) {
-      return productos.splice(index, 1)[0];
+  const deleteProducto = (id) => {
+    const productoIndex = productos.findIndex((producto) => producto.id === id);
+    if (productoIndex !== -1) {
+      productos.splice(productoIndex, 1);
+      return true;
     }
-    return null;
+    return false;
   };
-
   return {
     find,
     findById,
-    findByIdAndUpdate,
-    findByIdAndDelete,
+    create,
+    update,
+    delete: deleteProducto,
   };
 })();
 
