@@ -11,7 +11,7 @@ exports.getCategorias = async (req, res) => {
 
 exports.createCategoria = async (req, res) => {
     try {
-        const newCategoria = await CategoriaModel.create(req.body);
+        const newCategoria = await CategoriaModel.create(req.body.nombre);
         res.status(201).json(newCategoria);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -20,7 +20,7 @@ exports.createCategoria = async (req, res) => {
 
 exports.updateCategoria = async (req, res) => {
     try {
-        const updatedCategoria = await CategoriaModel.update(req.params.id, req.body.name);
+        const updatedCategoria = await CategoriaModel.update(req.params.id, req.body.nombre);
         if (!updatedCategoria) {
             return res.status(404).json({ message: 'CategoriaModel not found' });
         }
