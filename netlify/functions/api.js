@@ -1,5 +1,6 @@
 const express = require("express");
 const productosRouter = require("./routes/productos");
+const categoriasRouter = require("./routes/categorias");
 const errorHandler = require("./middlewares/errorHandler");
 const serverless = require ("serverless-http") ;
 const cors = require ( "cors");
@@ -26,7 +27,7 @@ app.get("/health", (req, res) => {
 
 // Rutas de productos
 app.use("/api/productos", productosRouter);
-app.use('/api/categories', categoryRoutes);
+app.use('/api/categorias', categoriasRouter);
 
 app.use(errorHandler);
 
