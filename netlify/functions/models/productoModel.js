@@ -26,8 +26,6 @@ const producto = (() => {
         ...producto,
         categoria: categoriaInfo ? categoriaInfo.nombre : null,
       };
-
-      delete productoResponse.categoriaId;
       
       return productoResponse;
     });
@@ -42,8 +40,6 @@ const producto = (() => {
         ...producto,
         categoria: categoriaInfo ? categoriaInfo.nombre : null,
       };
-
-      delete productoResponse.categoriaId;
 
       return productoResponse;
     }
