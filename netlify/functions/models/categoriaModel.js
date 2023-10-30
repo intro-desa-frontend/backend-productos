@@ -9,7 +9,7 @@ const find = () => {
 };
 
 const findById = (id) => {
-    return categorias.find(categoria => Number(categoria.id) === Number(id));
+    return categorias.find(categoria => categoria.id === id);
 };
 
 const create = (name) => {
@@ -19,7 +19,7 @@ const create = (name) => {
 };
 
 const update = (id, name) => {
-    const categoriaIndex = categorias.findIndex(categoria => Number(categoria.id) === Number(id));
+    const categoriaIndex = categorias.findIndex(categoria => categoria.id === id);
     if (categoriaIndex !== -1) {
         categorias[categoriaIndex].nombre = name;
         return categorias[categoriaIndex];
