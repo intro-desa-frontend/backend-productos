@@ -32,10 +32,10 @@ const producto = (() => {
 
   const findById = (id) => {
     const producto = productos.find((producto) => producto.id === id);
-    delete producto.categoriaId;
-
     if (producto) {
       const categoriaInfo = categoria.findById(producto.categoriaId);
+
+      delete producto.categoriaId;
       return {
         ...producto,
         categoria: categoriaInfo ? categoriaInfo.nombre : null,
