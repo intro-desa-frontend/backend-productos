@@ -22,11 +22,14 @@ const producto = (() => {
   const find = () => {
     return productos.map((producto) => {
       const categoriaInfo = categoria.findById(producto.categoriaId);
-      delete producto.categoriaId;
-      return {
+      let productoResponse = {
         ...producto,
         categoria: categoriaInfo ? categoriaInfo.nombre : null,
       };
+
+      delete productoResponse.categoriaId;
+      
+      return productoResponse;
     });
   };
 
@@ -35,11 +38,14 @@ const producto = (() => {
     if (producto) {
       const categoriaInfo = categoria.findById(producto.categoriaId);
 
-      delete producto.categoriaId;
-      return {
+      let productoResponse = {
         ...producto,
         categoria: categoriaInfo ? categoriaInfo.nombre : null,
       };
+
+      delete productoResponse.categoriaId;
+
+      return productoResponse;
     }
     return null;
   };
