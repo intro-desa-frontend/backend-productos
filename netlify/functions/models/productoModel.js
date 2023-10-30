@@ -31,7 +31,7 @@ const producto = (() => {
   };
 
   const findById = (id) => {
-    const producto = productos.find((producto) => producto.id === id);
+    const producto = productos.find((producto) => Number(producto.id) === Number(id));
     if (producto) {
       const categoriaInfo = categoria.findById(producto.categoriaId);
 
@@ -51,7 +51,7 @@ const producto = (() => {
   };
 
   const update = (id, updatedProducto) => {
-    const productoIndex = productos.findIndex((producto) => producto.id === id);
+    const productoIndex = productos.findIndex((producto) => Number(producto.id) === Number(id));
     if (productoIndex !== -1) {
       productos[productoIndex] = {
         ...productos[productoIndex],
@@ -63,7 +63,7 @@ const producto = (() => {
   };
 
   const deleteProducto = (id) => {
-    const productoIndex = productos.findIndex((producto) => producto.id === id);
+    const productoIndex = productos.findIndex((producto) => Number(producto.id) === Number(id));
     if (productoIndex !== -1) {
       productos.splice(productoIndex, 1);
       return true;
